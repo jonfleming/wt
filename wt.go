@@ -1,31 +1,15 @@
-package main
+package wt
 
 import (
 	"fmt"
 	"net/http"
-	"os"
 	"strings"
 
 	"golang.org/x/net/html"
 )
 
-func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("Usage: go run main.go <URL>")
-		os.Exit(1)
-	}
-
-	url := os.Args[1]
-	text, err := fetchAndConvert(url)
-	if err != nil {
-		fmt.Printf("Error: %v\n", err)
-		os.Exit(1)
-	}
-
-	fmt.Println(text)
-}
-
-func fetchAndConvert(url string) (string, error) {
+// ConvertURL fetches the content from the given URL and converts it to plain text
+func ConvertURL(url string) (string, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return "", err

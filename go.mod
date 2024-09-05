@@ -1,4 +1,4 @@
-module github.com/jonfleming/wt
+module wt
 
 go 1.23.0
 

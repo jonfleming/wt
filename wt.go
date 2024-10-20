@@ -1,12 +1,28 @@
-package wt
+package main
 
 import (
 	"fmt"
 	"net/http"
-	"strings"
-
+	"os"
+	"strings"	
 	"golang.org/x/net/html"
 )
+
+func main() {
+	if len(os.Args) != 2 {
+		fmt.Println("Usage: html2text <URL>")
+		os.Exit(1)
+	}
+
+	url := os.Args[1]
+	text, err := wt.ConvertURL(url)
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		os.Exit(1)
+	}
+
+	fmt.Println(text)
+}
 
 // ConvertURL fetches the content from the given URL and converts it to plain text
 func ConvertURL(url string) (string, error) {

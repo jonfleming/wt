@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"strings"	
+	"strings"
+
 	"golang.org/x/net/html"
 )
 
@@ -15,7 +16,7 @@ func main() {
 	}
 
 	url := os.Args[1]
-	text, err := wt.ConvertURL(url)
+	text, err := ConvertURL(url)
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
 		os.Exit(1)

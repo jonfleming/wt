@@ -62,6 +62,10 @@ func findBody(n *html.Node) *html.Node {
 }
 
 func extractText(n *html.Node, text *strings.Builder) {
+	if n.Type == html.ElementNode && n.Data == "script" {
+		return // Skip <script> tags and their contents
+	}
+
 	if n.Type == html.TextNode {
 		text.WriteString(strings.TrimSpace(n.Data))
 		text.WriteString(" ")

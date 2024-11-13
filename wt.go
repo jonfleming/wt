@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	version := "v1.1.0" // This will be set at build time
+	version := "v1.1.1"
 	var showVersion bool
 	flag.BoolVar(&showVersion, "version", false, "show version and exit")
 	flag.Parse()

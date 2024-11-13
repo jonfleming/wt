@@ -10,11 +10,8 @@ import (
 	"golang.org/x/net/html"
 )
 
-var (
-	version = "v1.0.9" // This will be set at build time
-)
-
 func main() {
+	version := "v1.0.9" // This will be set at build time
 	var showVersion bool
 	flag.BoolVar(&showVersion, "version", false, "show version and exit")
 	flag.Parse()

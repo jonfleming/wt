@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
@@ -9,20 +10,33 @@ import (
 	"golang.org/x/net/html"
 )
 
+var (
+	version = "undefined" // This will be set at build time
+)
+
 func main() {
+	var showVersion bool
+	flag.BoolVar(&showVersion, "version", false, "show version and exit")
+	flag.Parse()
+
+	if showVersion {
+		fmt.Println("Version:", version)
+		os.Exit(0)
+	}
+
 	if len(os.Args) != 2 {
-		fmt.Println("Usage: html2text <URL>")
+		fmt.Fprintln(os.Stdout, "Usage: html2text <URL>")
 		os.Exit(1)
 	}
 
 	url := os.Args[1]
 	text, err := ConvertURL(url)
 	if err != nil {
-		fmt.Printf("Error: %v\n", err)
+		fmt.Fprintf(os.Stdout, "Error: %v\n", err)
 		os.Exit(1)
 	}
 
-	fmt.Println(text)
+	fmt.Fprintln(os.Stdout, text)
 }
 
 // ConvertURL fetches the content from the given URL and converts it to plain text

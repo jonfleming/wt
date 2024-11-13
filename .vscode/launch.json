@@ -10,7 +10,7 @@
             "request": "launch",
             "mode": "debug",
             "program": "${file}",
-            "args": ["https://dev.to/peholmst/strategic-domain-driven-design-3e87"]
+            "args": ["-version"]
         }
 
     ]

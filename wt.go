@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	version = "undefined" // This will be set at build time
+	version = "v1.0.9" // This will be set at build time
 )
 
 func main() {
